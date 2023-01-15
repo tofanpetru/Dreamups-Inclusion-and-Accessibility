@@ -1,0 +1,1 @@
+document.getElementsByClassName("powered-by__PoweredBy-sc-1dvm2ur-0").remove()

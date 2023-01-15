@@ -1,0 +1,134 @@
+<div id="quick-menu" class="modal">
+    <div class="modal-content">
+        <a class="right btn btn-small" onclick="$('#quick-menu').modal('close');" id="deactivate-menu">
+            <div id="formenuoff"><strong>[0]</strong> Nu am nevoie de funcţii ajutătoare</div>
+        </a>
+        <h4><i class="material-icons" style="font-size: 2rem;">keyboard</i><strong>Navigare</strong></h4>
+        <hr>
+        <p>Bun venit pe <strong>Easy Access</strong>. Navigati usor prin tastatura:</p>
+        <div class="container-info">
+            <div>
+                <div class="text-box" id="colored-box">
+                    <h1 class="text-box-title">1</h1>
+                    <p><strong>Informaţii medicale</strong></p>
+                    <p><i class="material-icons" style="font-size: 2rem;">help</i></p>
+                </div>
+            </div>
+
+            <div>
+                <div class="text-box" id="colored-box">
+                    <h1 class="text-box-title">2</h1>
+                    <p><strong>Contactați medicul</strong></p>
+                    <p><i class="material-icons" style="font-size: 2rem;">contact_phone</i></p>
+                </div>
+            </div>
+            <div>
+                <div class="text-box" id="colored-box">
+                    <h1 class="text-box-title">3</h1>
+                    <p><strong>Contactează suport</strong></p>
+                    <p><i class="material-icons" style="font-size: 2rem;">support_agent</i></p>
+                </div>
+            </div>
+            <div style="background-color: #fff">
+                <div class="text-box" style="position: absolute; left: 999999px;">
+                    <h1 class="text-box-title">4</h1>
+                    <p><strong>Contactează echipa suport</strong></p>
+                </div>
+            </div>
+            <div>
+                <div class="text-box">
+                    <h1 class="text-box-title">5</h1>
+                    <p><strong>Pagina principală</strong></p>
+                    <p><i class="material-icons" style="font-size: 2rem;">home</i></p>
+                </div>
+            </div>
+            <div>
+                <div class="text-box">
+                    <h1 class="text-box-title">6</h1>
+                    <p><strong>Pagina anterioara</strong></p>
+                    <p><i class="material-icons" style="font-size: 2rem;">arrow_back</i></p>
+                </div>
+            </div>
+            <div>
+                <div class="text-box">
+                    <h1 class="text-box-title">7</h1>
+                    <p><strong>Acceseaza pagina</strong></p>
+                    <p><i class="material-icons" style="font-size: 2rem;">ads_click</i></p>
+                </div>
+            </div>
+            <div>
+                <div class="text-box" style="background-color: green;">
+                    <h1 class="text-box-title">8</h1>
+                    <p><strong>Aminteste-mi pe ce pagină ma aflu</strong></p>
+                    <p><i class="material-icons" style="font-size: 2rem;">notification_important</i></p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <ul class="collapsible">
+            <li class="active">
+                <div class="collapsible-header"><i class="material-icons">keyboard</i>Utilizarea tastaturii pentru
+                    navigare</div>
+                <div class="collapsible-body"><span>Navigarea speciala se va efectua după
+                        numerele ca de exemplu:</span>
+                    <span class="text-box-title" style="
+            border-style: solid;
+            text-align: center;
+            padding: 0.5px;
+        ">1</span>. Deschide meniul de navigare prin tasta "9"
+                </div>
+            </li>
+        </ul>
+
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-small">Continuare</a>
+    </div>
+</div>
+
+<script>
+    if (document.cookie.indexOf('modal-menu-open') != -1) {
+        document.querySelector("#deactivate-menu").textContent = "[0] Am nevoie de această funcţionalitate";
+        document.querySelector("#deactivate-menu").classList.add("red");
+    } else {
+        document.querySelector("#deactivate-menu").textContent = "[0] Nu am nevoie de funcţii ajutătoare";
+        document.querySelector("#deactivate-menu").classList.add("blue");
+
+    }
+</script>
+<script>
+    naviBoard.setNavigation("domainsCtrl");
+
+    $("#quick-menu").keypress(function (event) {
+        if (event.keyCode == 97 || event.keyCode == 49) {
+            location.replace("http://127.0.0.1:5500/domains.html");
+        } else if (event.keyCode == 98 || event.keyCode == 50) {
+            location.replace("http://127.0.0.1:5500/contacteazaMedicul.html");
+        } else if (event.keyCode == 101 || event.keyCode == 53) {
+            location.replace("http://127.0.0.1:5500/index.html");
+        } else if (event.keyCode == 102 || event.keyCode == 54) {
+            history.back();
+        } else if (event.keyCode == 103 || event.keyCode == 55) {
+            $("#quick-menu").modal("close");
+        } else if (event.keyCode == 99 || event.keyCode == 51) {
+            location.replace("http://127.0.0.1:5500/contact.html");
+        } else if (event.keyCode == 109) {
+            speechSynthesis.cancel();
+        } else if (event.keyCode == 56 || event.keyCode == 104) {
+            speekResponse("Acuma va aflati pe pagina " + curentPageName + ".");
+        } else if (event.keyCode == 48 || event.keyCode == 96) {
+            if (document.cookie.indexOf('modal-menu-open') == -1) {
+                setCookie({ name: "modal-menu-open", value: "true", days: 20 });
+            } else {
+                deleteCookie("modal-menu-open");
+            }
+            $("#quick-menu").modal("close");
+            speechSynthesis.cancel();
+        }
+    })
+    $("#html").keypress(function (event) {
+        if (event.keyCode == 105 || event.keyCode == 57) {
+            $("#quick-menu").modal("open");
+        }
+    })
+</script>

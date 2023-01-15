@@ -1,0 +1,41 @@
+<div class="fixed-action-btn direction-top active" style="bottom: 45px; right: 24px;">
+    <a id="menu" 
+    class="btn btn-floating btn-large cyan pulse"  
+    style="padding: 0 !important; color: crimson;" 
+    onclick="$('.tap-target').tapTarget('open')">
+      <i class="material-icons"
+      style="font-size: 2.5rem; color: red;"
+      >settings_accessibility</i>
+    </a>
+
+    <div class="tap-target" data-target="menu">
+      <div class="tap-target-content">
+        
+        <div>
+          <p class="close-asistent no-select" style="color: currentColor;">-</p>
+          <p class="more-asistent no-select" style="color: currentColor;">...</p>
+          <video class="scale2 asistent-video" id="asistent-p" playsinline="" autoplay="autoplay" muted="muted" width="220px" style="border-style: groove;"
+          poster="media/all/final-img-asistent.png"
+          src="media/videos/bun-venit-pe-asist-acces.mp4"
+          class="playing">
+        </video>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Se va utiliza aici temporar, pana trec pe framework-->
+  <script>
+      $('.sidenav').sidenav();
+    $('.tap-target').tapTarget();
+    $('#quick-menu').modal();
+    $('select').not('.disabled').formSelect(); //in browser cand preyinti
+
+    if(document.cookie.indexOf('modal-menu-open') == -1){
+        $('#quick-menu').modal('open');
+        $('.tap-target').tapTarget('open');
+        speekResponse("Va aflaţi pe pagina: " + curentPageName + " pentru a dezactiva meniul ajutător, tastaţi 0. Pentru a accesa pagina tastaţi 7. Pentru a accesa pagina cu informaţii medicale tastaţi 1. Pentru a contacta medicul tastaţi 2. Pentru a contacta echipa suport tastaţi 3. Pentru a merge la pagina principala tastaţi 5, pentru a merge la pagina anterioara tastaţi 6. Adu-mi aminte pe ce pagină ma aflu, tastati 8");
+      }
+    
+    $('.collapsible').collapsible();
+    $('.dropdown-trigger').dropdown();
+  </script>
